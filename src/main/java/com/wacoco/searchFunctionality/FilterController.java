@@ -31,9 +31,10 @@ public class FilterController {
     }
 
 
-    public String getKeyWord() {
-        String result = "?q=" + keyWord;
-        return result;
+    public String getKeyWord(String keyword) {
+        StringBuilder result = new StringBuilder();
+        result.append("?q=" + keyword.replace(" ", "%20"));
+        return result.toString();
     }
 
     //TODO "Publish Date To, Filing Date From, Filing Date To" need to be added and logic around it.
@@ -46,8 +47,13 @@ public class FilterController {
     public String getFlags(List<String> flag) {
         StringBuilder result = new StringBuilder("");
 
-        for (int i = 0; i < flag.size(); i++) {
-            result.append(FilterConfig.FLAG_MAP.getOrDefault(flag.get(i), null) + "true");
+        if(flag.isEmpty() == false){
+            for (int i = 0; i < flag.size(); i++) {
+
+                result.append(FilterConfig.FLAG_MAP.getOrDefault(flag.get(i), "") + "true");
+            }
+        } else {
+            result.setLength(0);
         }
 
         return result.toString();
@@ -58,94 +64,112 @@ public class FilterController {
         StringBuilder result = new StringBuilder("");
 
 
-
-        for (int i = 0; i <countries.size(); i++) {
-            result.append("&j.must="+ FilterConfig.COUNTRIES_MAP.getOrDefault(countries.get(i), null));
+        if(countries.isEmpty() == false) {
+            for (int i = 0; i <countries.size(); i++) {
+                result.append("&j.must="+ FilterConfig.COUNTRIES_MAP.getOrDefault(countries.get(i), ""));
+            }
+        } else{
+            result.setLength(0);
         }
         return result.toString();
         }
 
 
     public String getApplicants(List<String> applicantsList) {
-        StringBuilder resultUnModified = new StringBuilder("");
-
-        for (int i = 0; i < applicantsList.size(); i++) {
-            resultUnModified.append("&applicant.must=" + applicantsList.get(i));
-        }
-
-        String resultModified = resultUnModified.toString().replace(" ", "%20");;
-
-        return resultModified;
-    }
-
-    public String getInventor(List<String> inventorList) {
-        StringBuilder resultUnModified = new StringBuilder("");
-
-        for (int i = 0; i < inventorList.size(); i++) {
-            resultUnModified.append("&inventor.must=" + inventorList.get(i));
-        }
-
-        String resultModified = resultUnModified.toString().replace(" ", "%20");;
-
-        return resultModified;
-    }
-
-    public String getOwner(List<String> ownerList) {
-        StringBuilder resultUnModified = new StringBuilder("");
-
-        for (int i = 0; i < ownerList.size(); i++) {
-            resultUnModified.append("&owner.must=" + ownerList.get(i));
-        }
-
-        String resultModified = resultUnModified.toString().replace(" ", "%20");;
-
-        return resultModified;
-    }
-
-    //TODO Store maps in another way
-    public String getLegalStatus(List<String> legals) {
         StringBuilder result = new StringBuilder("");
+        if(applicantsList.isEmpty() == false) {
+            for (int i = 0; i < applicantsList.size(); i++) {
+                result.append("&applicant.must=" + applicantsList.get(i));
+            }
 
-        for (int i = 0; i <legals.size(); i++) {
-            result.append("&patentStatus.must="+ FilterConfig.LEGALSTATUS_MAP.getOrDefault(legals.get(i), null));
+            result.toString().replace(" ", "%20");
+        } else {
+
         }
         return result.toString();
     }
 
-    //TODO Store maps in another way
-    public String getDocumentType(List<String> docTypes) {
+    public String getInventor(List<String> inventorList) {
         StringBuilder result = new StringBuilder("");
 
-        for (int i = 0; i <docTypes.size(); i++) {
-            result.append("&types.must="+ FilterConfig.DOCTYPE_MAP.getOrDefault(docTypes.get(i), null));
+        if(inventorList.isEmpty() == false) {
+            for (int i = 0; i < inventorList.size(); i++) {
+                result.append("&inventor.must=" + inventorList.get(i));
+            }
+
+            result.toString().replace(" ", "%20");
+        } else {
+            result.setLength(0);
         }
 
+        return result.toString();
+    }
+
+    public String getOwner(List<String> ownerList) {
+        StringBuilder result = new StringBuilder("");
+        if(ownerList.isEmpty() == false) {
+            for (int i = 0; i < ownerList.size(); i++) {
+                result.append("&owner.must=" + ownerList.get(i));
+            }
+            result.toString().replace(" ", "%20");
+        }   else {
+            result.setLength(0);
+        }
+        return result.toString();
+    }
+
+
+    public String getLegalStatus(List<String> legals) {
+        StringBuilder result = new StringBuilder("");
+        if (legals.isEmpty() == false) {
+            for (int i = 0; i <legals.size(); i++) {
+                result.append("&patentStatus.must="+ FilterConfig.LEGALSTATUS_MAP.getOrDefault(legals.get(i), ""));
+            }
+        } else {
+            result.setLength(0);
+        }
+        return result.toString();
+    }
+
+
+    public String getDocumentType(List<String> docTypes) {
+        StringBuilder result = new StringBuilder("");
+        if (docTypes.isEmpty() == false) {
+            for (int i = 0; i <docTypes.size(); i++) {
+                result.append("&types.must="+ FilterConfig.DOCTYPE_MAP.getOrDefault(docTypes.get(i), ""));
+            }
+        } else {
+            result.setLength(0);
+        }
 
         return result.toString();
     }
 
     public String getBiologicals(List<String> bioList) {
-        StringBuilder resultUnModified = new StringBuilder("");
-
-        for (int i = 0; i < bioList.size(); i++) {
-            resultUnModified.append("&sequenceName.must=" + bioList.get(i));
+        StringBuilder result = new StringBuilder("");
+        if (bioList.isEmpty() == false) {
+            for (int i = 0; i < bioList.size(); i++) {
+                result.append("&sequenceName.must=" + bioList.get(i));
+            }
+            result.toString().replace(" ", "%20");
+        } else {
+            result.setLength(0);
         }
 
-        String resultModified = resultUnModified.toString().replace(" ", "%20");
-
-        return resultModified;
+        return result.toString();
     }
 
-    //TODO make sure
     public String getClassifications(List<String> classificationList) {
-        StringBuilder resultUnModified = new StringBuilder("");
-
-        for (int i = 0; i < classificationList.size(); i++) {
-            resultUnModified.append("&classCpc.must=" + classificationList.get(i));
+        StringBuilder result = new StringBuilder("");
+        if (classificationList.isEmpty() == false) {
+            for (int i = 0; i < classificationList.size(); i++) {
+                result.append("&classCpc.must=" + classificationList.get(i));
+            }
+             result.toString().replace(" ", "%20");
+        } else {
+            result.setLength(0);
         }
 
-        String resultModified = resultUnModified.toString().replace(" ", "%20");
-
-        return resultModified;
+        return result.toString();
     }
 }
