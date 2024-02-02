@@ -166,3 +166,35 @@ button:hover {
     font-size: 14px;
     color: #555;
 }
+.panel-header {
+    display: flex;
+    justify-content: space-between; /* Aligns items to the left and right */
+    align-items: center; /* Centers items vertically */
+}
+
+.create-job-btn {
+    background-color: #4caf50; /* Green background */
+    color: white; /* White text */
+    border: none;
+    padding: 8px 12px; /* Padding inside the button */
+    border-radius: 4px; /* Rounded corners */
+    cursor: pointer; /* Hand cursor on hover */
+    font-size: 12px; /* Text size */
+    margin-left: auto; /* Pushes the button to the right */
+}
+
+.create-job-btn:hover {
+    background-color: #45a049; /* Slightly darker green on hover */
+}
+
+/* You might need to adjust your .left-panel or .right-panel styles to accommodate the new .panel-header */
+.left-panel, .right-panel {
+    /* Existing styles */
+    position: relative; /* Added to support absolute positioning of the button if needed */
+}
+
+/* Add this if you want the button to be absolutely positioned at the top right corner of the left-panel */
+.create-job-btn {
+    position: absolute;
+    right: 20px; /* Adjust the value as needed */
+}
