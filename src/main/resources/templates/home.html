@@ -1,0 +1,112 @@
+<body>
+<div class="container">
+    <!-- Left Panel for Tag Systems -->
+    <div class="left-panel">
+        <h3>Filter Query</h3>
+        <div class="tag-system" id="keyword-tags">
+            <label for="keyword-input">Keyword:</label>
+            <input type="text" id="keyword-input" placeholder="Add a keyword">
+            <button onclick="addTag('keyword-tags')">Add</button>
+            <div class="tag-container" id="keyword-tag-container"></div>
+        </div>
+
+        <div class="tag-system" id="date-range-tags">
+            <label for="date-range-input">Date Range:</label>
+            <input type="text" id="date-range-input" placeholder="Add a tag">
+            <button onclick="addTag('date-range-tags')">Add</button>
+            <div class="tag-container" id="date-range-tag-container"></div>
+        </div>
+
+        <div class="tag-system" id="flags-tags">
+            <label for="flags-dropdown">Flags:</label>
+            <select id="flags-dropdown"></select>
+            <button onclick="addFlagTag('flags-tags')">Add</button>
+            <div class="tag-container" id="flags-tag-container"></div>
+        </div>
+
+        <div class="tag-system" id="jurisdiction-tags">
+            <label for="jurisdiction-dropdown">Jurisdiction:</label>
+            <select id="jurisdiction-dropdown"></select>
+            <button onclick="addTag('jurisdiction-tags')">Add</button>
+            <div class="tag-container" id="jurisdiction-tag-container"></div>
+        </div>
+
+        <div class="tag-system" id="applicants-tags">
+            <label for="applicants-input">Applicants:</label>
+            <input type="text" id="applicants-input" placeholder="Add a tag">
+            <button onclick="addTag('applicants-tags')">Add</button>
+            <div class="tag-container" id="applicants-tag-container"></div>
+        </div>
+
+        <div class="tag-system" id="inventor-tags">
+            <label for="inventor-input">Inventor:</label>
+            <input type="text" id="inventor-input" placeholder="Add a tag">
+            <button onclick="addTag('inventor-tags')">Add</button>
+            <div class="tag-container" id="inventor-tag-container"></div>
+        </div>
+
+        <div class="tag-system" id="owner-tags">
+            <label for="owner-input">Owner:</label>
+            <input type="text" id="owner-input" placeholder="Add a tag">
+            <button onclick="addTag('owner-tags')">Add</button>
+            <div class="tag-container" id="owner-tag-container"></div>
+        </div>
+
+        <div class="tag-system" id="legal-status-tags">
+            <label for="legal-status-input">Legal Status:</label>
+            <input type="text" id="legal-status-input" placeholder="Add a tag">
+            <button onclick="addTag('legal-status-tags')">Add</button>
+            <div class="tag-container" id="legal-status-tag-container"></div>
+        </div>
+
+        <div class="tag-system" id="document-type-tags">
+            <label for="document-type-input">Document Type:</label>
+            <input type="text" id="document-type-input" placeholder="Add a tag">
+            <button onclick="addTag('document-type-tags')">Add</button>
+            <div class="tag-container" id="document-type-tag-container"></div>
+        </div>
+
+        <div class="tag-system" id="biologicals-tags">
+            <label for="biologicals-input">Biologicals:</label>
+            <input type="text" id="biologicals-input" placeholder="Add a tag">
+            <button onclick="addTag('biologicals-tags')">Add</button>
+            <div class="tag-container" id="biologicals-tag-container"></div>
+        </div>
+
+        <div class="tag-system" id="classifications-tags">
+            <label for="classifications-input">Classifications:</label>
+            <input type="text" id="classifications-input" placeholder="Add a tag">
+            <button onclick="addTag('classifications-tags')">Add</button>
+            <div class="tag-container" id="classifications-tag-container"></div>
+        </div>
+    </div>
+
+    <!-- Right Panel for File Upload and Result List -->
+    <div class="right-panel">
+        <h3>File Query</h3>
+        <div class="file-upload" id="file-upload">
+            <label for="file-input">Choose File:</label>
+            <div class="file-container">
+                <input type="file" id="file-input">
+                <button onclick="uploadFile()">Upload</button>
+            </div>
+        </div>
+        <h3>Overview</h3>
+        <div class="result-list">
+
+            <ul class="card-list">
+                <li class="card">
+                    <h3>Card 1</h3>
+                    <p>Card 1 description.</p>
+                </li>
+                <li class="card">
+                    <h3>Card 2</h3>
+                    <p>Card 2 description</p>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<script src="script.js"></script>
+</body>

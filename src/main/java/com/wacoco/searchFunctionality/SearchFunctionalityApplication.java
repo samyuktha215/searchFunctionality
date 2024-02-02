@@ -21,7 +21,7 @@ public class SearchFunctionalityApplication {
 	String mainUrl = "https://www.lens.org/lens/search/patent/list";
 
 	public static void main(String[] args) throws IOException {
-	
+
 		//TODO remove mock code when done, from here..
 		String keyWords = "Solar panel";
 		List<String> flagList = new ArrayList<String>(
